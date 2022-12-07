@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+Electric Field Search
+{% endblock %}
+
+{% block content %}
+<!-- Electric -->
+<div class="container">
+    <div class="row">
+        <div class="col-8 my-5">
+            <div class="card card-body bg-light">
+                <form method="POST" action="{{ url_for('electric_search') }}">
+                    <h4>Enter the unknown as 0</h4>
+                    <table class="table table-hover table-dark">
+                        <tr>
+                            <td>Electric Field(E)</td>
+                            <td><input name='electric' type='NUMBER' step="any" placeholder='{{ electric }}' class="form-control">  N/C</td>
+                        </tr>
+                        <tr>
+                            <td>Force(F)</td>
+                            <td><input name='force' type='NUMBER' step="any" placeholder='{{ forc }}' class="form-control">  N</td>
+                        </tr>
+                        <tr>
+                            <td>Charge(q)</td>
+                            <td><input name='charge' type='NUMBER' step="any" placeholder='{{ charge }}' class="form-control">  C</td>
+                        </tr>
+                    </table>
+                    <p><input value="Calculate" class="btn btn-dark text-white" type="submit"></p>
+                </form>
+                <p><span class="bg-dark text-white p-2">Answer:</span><input readonly value="{{ the_result3 }}" type="text"
+                        placeholder=""></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

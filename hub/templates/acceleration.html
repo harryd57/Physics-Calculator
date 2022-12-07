@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+Acceleration Search
+{% endblock %}
+
+{% block content %}
+<!-- Acceleration -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8 my-5">
+            <div class="card card-body ">
+                <form method="POST" action="{{ url_for('acc_search') }}">
+                    <h4>Enter the unknown as 0</h4>
+                    <table class="table table-hover table-dark">
+                        <tr>
+                            <td>Initial Velocity(u)</td>
+                            <td><input name='initial' type='NUMBER' step="any" placeholder='{{ initial }}' class="form-control">  m/s</td>
+                        </tr>
+                        <tr>
+                            <td>Final Velocity(v)</td>
+                            <td><input name='final' type='NUMBER' step="any" placeholder='{{ final }}' class="form-control">  m/s</td>
+                        </tr>
+                        <tr>
+                            <td>Time(t)</td>
+                            <td><input name='time' type='NUMBER' step="any" placeholder='{{ time }}' class="form-control">  Sec</td>
+                        </tr>
+                        <tr>
+                            <td>Acceleration(a)</td>
+                            <td><input name='acc' type='NUMBER' step="any" placeholder='{{ acc }}' class="form-control">  m/s^2</td>
+                        </tr>
+                    </table>
+                    <p><input value="Calculate" class="btn btn-dark text-white" type="submit"></p>
+                </form>
+                <p><span class="bg-dark text-white p-2">Answer:</span><input readonly value="{{ the_result1 }}" type="text" placeholder='{{ the_result1 }}'></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-5">
+    <div class="row">
+        <!-- image column -->
+        <div class="col-2">
+            <img src="{{url_for('static',filename = 'img/phy-1.jpg')}}" class="img-fluid rounded" alt="project">
+            <img src="{{url_for('static',filename = 'img/phy-2.jpg')}}" class="img-fluid rounded" alt="project">
+            <img src="{{url_for('static',filename = 'img/phy-3.jpg')}}" class="img-fluid rounded" alt="project">
+        </div>
+        <!-- end of image column -->
+        <!-- Table column -->
+        <div class="col-8">
+            <table class="table table-hover table-dark, text-center">
+                <thead style="font-weight: bold; font-size: large;">
+                    <th scope="col">Topics</th>
+                </thead>
+                <tbody>
+                    {% for row in physics %}
+                    {% include 'includes/modals.html' %}
+                    <tr>
+                        <td>{{row.topics}}</td>
+                        <td>
+                            <button class="btn btn-outline btn-info" data-toggle="modal"
+                                data-target="#Modal-MoreInfo-{{ row.id }}">
+                                Details</button>
+                            {% with word=(url_for(row.route)) %}
+                            <form method="get" action="{{ word }}">
+                                <button class="btn btn-outline btn-secondary" type="submit">Solve</button>
+                            </form>
+                            {% endwith %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- end of table column -->
+        <!-- quotes column -->
+        <div id="phy-bg" class="col-2">
+            <blockquote class="blockquote text-right">
+                <p><i class="fas fa-quote-left fa-2x mr-3"></i>
+                    Imagination is more important than knowledge
+                </p>
+                <footer class="blockquote-footer text-left">Albert Einstein</footer>
+            </blockquote>
+            <blockquote class="blockquote text-right">
+                <p><i class="fas fa-quote-left fa-2x mr-3"></i>
+                    What one man calls God, another calls the laws of physics
+                </p>
+                <footer class="blockquote-footer text-left">Nikola Tesla</footer>
+            </blockquote>
+            <blockquote class="blockquote text-right">
+                <p><i class="fas fa-quote-left fa-2x mr-3"></i>
+                    Physics isn't a religion. If it were, we'd have a much easier time raising money
+                </p>
+                <footer class="blockquote-footer text-left">Leon M. Lederman</footer>
+            </blockquote>
+            <blockquote class="blockquote text-right">
+                <p><i class="fas fa-quote-left fa-2x mr-3"></i>
+                    In physics, you don't have to go around making trouble for yourself - nature does it for you
+                </p>
+                <footer class="blockquote-footer text-left">Frank Wilczek</footer>
+            </blockquote>
+            <blockquote class="blockquote text-right">
+                <p><i class="fas fa-quote-left fa-2x mr-3"></i>
+                    Everything we call real is made up of things that cannot be regarded as real
+                </p>
+                <footer class="blockquote-footer text-left">Niels Bohr</footer>
+            </blockquote>
+            <blockquote class="blockquote text-right">
+                <p><i class="fas fa-quote-left fa-2x mr-3"></i>
+                    Science is the belief in the ignorance of experts
+                </p>
+                <footer class="blockquote-footer text-left">Richard P. Feynman</footer>
+            </blockquote>
+        </div>
+        <!-- end of quote column -->
+    </div>
+</div>
+
+{% endblock %}
